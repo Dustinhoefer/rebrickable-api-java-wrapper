@@ -28,4 +28,17 @@ public class ColorService {
         return new ObjectMapper().readValue(jsonResponse, ColorResponseDTO.class);
     }
 
+    /**
+     * Fetch a specific color by its id
+     *
+     * @param id
+     * @return ColorDTO
+     * @throws JsonProcessingException
+     */
+    public ColorDTO fetchColorById(String id) throws JsonProcessingException {
+
+        String jsonResponse = RebrickableService.fetchData(baseUrl + "/api/v3/lego/colors/" + id + "/", apiKey);
+
+        return new ObjectMapper().readValue(jsonResponse, ColorDTO.class);
+    }
 }

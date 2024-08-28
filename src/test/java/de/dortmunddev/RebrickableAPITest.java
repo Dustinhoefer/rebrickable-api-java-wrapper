@@ -57,4 +57,19 @@ public class RebrickableAPITest
         }
     }
 
+    public void testFetchSpecificColor() {
+        RebrickableAPI api = new RebrickableAPI();
+
+        try {
+            ColorDTO colorResponse = api.getColorService().fetchColorById("-1");
+
+            assertNotNull(colorResponse.getName());
+            assertNotNull(colorResponse.getRgb());
+            assertNotNull(colorResponse.getExternalIds());
+
+            assertEquals("[Unknown]", colorResponse.getName());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
