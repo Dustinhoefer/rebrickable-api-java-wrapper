@@ -1,9 +1,6 @@
 package de.dortmunddev;
 
-import de.dortmunddev.rebrickable.services.ColorService;
-import de.dortmunddev.rebrickable.services.ElementService;
-import de.dortmunddev.rebrickable.services.MinifigService;
-import de.dortmunddev.rebrickable.services.PartCategoryService;
+import de.dortmunddev.rebrickable.services.*;
 import lombok.Getter;
 
 public class RebrickableAPI {
@@ -22,6 +19,9 @@ public class RebrickableAPI {
     @Getter
     private final PartCategoryService partCategoryService;
 
+    @Getter
+    private final PartService partService;
+
     public RebrickableAPI() {
 
         // load api key from environment variable
@@ -35,6 +35,7 @@ public class RebrickableAPI {
         elementService = new ElementService(API_KEY, BASE_URL);
         minifigService = new MinifigService(API_KEY, BASE_URL);
         partCategoryService = new PartCategoryService(API_KEY, BASE_URL);
+        partService = new PartService(API_KEY, BASE_URL);
     }
 
 }
