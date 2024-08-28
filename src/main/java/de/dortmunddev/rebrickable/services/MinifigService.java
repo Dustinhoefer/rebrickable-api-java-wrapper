@@ -42,4 +42,18 @@ public class MinifigService {
 
         return new ObjectMapper().readValue(jsonResponse, MinifigDTO.class);
     }
+
+    /**
+     * Fetch all parts of a minifig by its set_num
+     *
+     * @param set_num
+     * @return InventoryResponseDTO
+     * @throws JsonProcessingException
+     */
+    public InventoryResponseDTO fetchMinifigPartsBySetNum(String set_num) throws JsonProcessingException {
+
+        String jsonResponse = RebrickableService.fetchData(baseUrl + "/api/v3/lego/minifigs/" + set_num + "/parts/", apiKey);
+
+        return new ObjectMapper().readValue(jsonResponse, InventoryResponseDTO.class);
+    }
 }
