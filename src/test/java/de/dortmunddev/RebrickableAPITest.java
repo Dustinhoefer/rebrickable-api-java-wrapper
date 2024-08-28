@@ -8,10 +8,7 @@ import de.dortmunddev.rebrickable.dto.minifig.InventoryResponseDTO;
 import de.dortmunddev.rebrickable.dto.minifig.MinifigDTO;
 import de.dortmunddev.rebrickable.dto.minifig.MinifigResponseDTO;
 import de.dortmunddev.rebrickable.dto.minifig.SetResponseDTO;
-import de.dortmunddev.rebrickable.dto.part.PartColorResponseDTO;
-import de.dortmunddev.rebrickable.dto.part.PartDTO;
-import de.dortmunddev.rebrickable.dto.part.PartDetailsDTO;
-import de.dortmunddev.rebrickable.dto.part.PartResponseDTO;
+import de.dortmunddev.rebrickable.dto.part.*;
 import de.dortmunddev.rebrickable.dto.part_category.PartCategoryDTO;
 import de.dortmunddev.rebrickable.dto.part_category.PartCategoryResponseDTO;
 import junit.framework.Test;
@@ -227,6 +224,19 @@ public class RebrickableAPITest extends TestCase {
             PartDetailsDTO partDetailsDTO = api.getPartService().fetchPartDetailsForPartColorCombination("003381", "9999");
 
             assertEquals(1977, partDetailsDTO.getYearFrom());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void testFetchSetsForPartColorCombination() {
+
+        RebrickableAPI api = new RebrickableAPI();
+
+        try {
+            PartSetResponseDTO setResponseDTO = api.getPartService().fetchSetsForPartColorCombination("003381", "9999");
+
+            assertTrue(setResponseDTO.getCount() > 0);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

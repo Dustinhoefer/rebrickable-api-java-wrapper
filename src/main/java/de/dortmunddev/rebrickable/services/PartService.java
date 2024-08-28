@@ -2,10 +2,7 @@ package de.dortmunddev.rebrickable.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.dortmunddev.rebrickable.dto.part.PartColorResponseDTO;
-import de.dortmunddev.rebrickable.dto.part.PartDTO;
-import de.dortmunddev.rebrickable.dto.part.PartDetailsDTO;
-import de.dortmunddev.rebrickable.dto.part.PartResponseDTO;
+import de.dortmunddev.rebrickable.dto.part.*;
 
 public class PartService {
 
@@ -57,6 +54,13 @@ public class PartService {
         String jsonResponse = RebrickableService.fetchData(baseUrl + "/api/v3/lego/parts/" + part_num + "/colors/" + color_id + "/", apiKey);
 
         return new ObjectMapper().readValue(jsonResponse, PartDetailsDTO.class);
+    }
+
+    public PartSetResponseDTO fetchSetsForPartColorCombination(String part_num, String color_id) throws JsonProcessingException {
+
+        String jsonResponse = RebrickableService.fetchData(baseUrl + "/api/v3/lego/parts/" + part_num + "/colors/" + color_id + "/sets/", apiKey);
+
+        return new ObjectMapper().readValue(jsonResponse, PartSetResponseDTO.class);
     }
 
 }
