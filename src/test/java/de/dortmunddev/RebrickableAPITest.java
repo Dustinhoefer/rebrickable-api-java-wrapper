@@ -10,6 +10,7 @@ import de.dortmunddev.rebrickable.dto.minifig.MinifigResponseDTO;
 import de.dortmunddev.rebrickable.dto.minifig.SetResponseDTO;
 import de.dortmunddev.rebrickable.dto.part.PartColorResponseDTO;
 import de.dortmunddev.rebrickable.dto.part.PartDTO;
+import de.dortmunddev.rebrickable.dto.part.PartDetailsDTO;
 import de.dortmunddev.rebrickable.dto.part.PartResponseDTO;
 import de.dortmunddev.rebrickable.dto.part_category.PartCategoryDTO;
 import de.dortmunddev.rebrickable.dto.part_category.PartCategoryResponseDTO;
@@ -213,6 +214,19 @@ public class RebrickableAPITest extends TestCase {
             PartColorResponseDTO partColorResponseDTO = api.getPartService().fetchColorsByPartNum("003381");
 
             assertTrue(partColorResponseDTO.getCount() > 0);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void testFetchPartColorCombination() {
+
+        RebrickableAPI api = new RebrickableAPI();
+
+        try {
+            PartDetailsDTO partDetailsDTO = api.getPartService().fetchPartDetailsForPartColorCombination("003381", "9999");
+
+            assertEquals(1977, partDetailsDTO.getYearFrom());
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
