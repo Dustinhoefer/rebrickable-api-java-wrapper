@@ -2,6 +2,7 @@ package de.dortmunddev.rebrickable.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.dortmunddev.rebrickable.dto.minifig.MinifigDTO;
 import de.dortmunddev.rebrickable.dto.minifig.MinifigResponseDTO;
 
 public class MinifigService {
@@ -28,4 +29,17 @@ public class MinifigService {
         return new ObjectMapper().readValue(jsonResponse, MinifigResponseDTO.class);
     }
 
+    /**
+     * Fetch a specific minifig by its set_num
+     *
+     * @param set_num
+     * @return MinifigDTO
+     * @throws JsonProcessingException
+     */
+    public MinifigDTO fetchMinifigBySetNum(String set_num) throws JsonProcessingException {
+
+        String jsonResponse = RebrickableService.fetchData(baseUrl + "/api/v3/lego/minifigs/" + set_num + "/", apiKey);
+
+        return new ObjectMapper().readValue(jsonResponse, MinifigDTO.class);
+    }
 }

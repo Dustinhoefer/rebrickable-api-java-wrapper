@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import de.dortmunddev.rebrickable.dto.color.ColorDTO;
 import de.dortmunddev.rebrickable.dto.color.ColorResponseDTO;
 import de.dortmunddev.rebrickable.dto.element.ElementResponseDTO;
+import de.dortmunddev.rebrickable.dto.minifig.MinifigDTO;
 import de.dortmunddev.rebrickable.dto.minifig.MinifigResponseDTO;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -97,6 +98,19 @@ public class RebrickableAPITest extends TestCase {
             MinifigResponseDTO minifigResponseDTO = api.getMinifigService().fetchAllMinifigs();
 
             assertTrue(minifigResponseDTO.getCount() > 0);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void testFetchSpecificMinifig() {
+
+        RebrickableAPI api = new RebrickableAPI();
+
+        try {
+            MinifigDTO minifigDTO = api.getMinifigService().fetchMinifigBySetNum("fig-000001");
+
+            assertNotNull(minifigDTO.getSetNum());
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
