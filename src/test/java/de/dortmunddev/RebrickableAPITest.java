@@ -268,4 +268,17 @@ public class RebrickableAPITest extends TestCase {
         }
     }
 
+    public void testFetchAllMinifigsForSet() {
+
+        RebrickableAPI api = new RebrickableAPI();
+
+        try {
+            MinifigResponseDTO minifigResponseDTO = api.getSetService().fetchAllMinifigsForSet("0003977811-1");
+
+            assertTrue(minifigResponseDTO.getCount() > 0);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

@@ -5,6 +5,9 @@ import lombok.Data;
 
 @Data
 public class MinifigDTO {
+
+    private int id;
+
     @JsonProperty("set_num")
     private String setNum;
 
@@ -21,4 +24,9 @@ public class MinifigDTO {
 
     @JsonProperty("last_modified_dt")
     private String lastModifiedDt;
+
+    @JsonProperty("set_name")
+    private String setName;
+
+    private int quantity;
 }
