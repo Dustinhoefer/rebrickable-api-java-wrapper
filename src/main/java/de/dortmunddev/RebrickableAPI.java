@@ -22,6 +22,9 @@ public class RebrickableAPI {
     @Getter
     private final PartService partService;
 
+    @Getter
+    private final SetService setService;
+
     public RebrickableAPI() {
 
         // load api key from environment variable
@@ -36,6 +39,7 @@ public class RebrickableAPI {
         minifigService = new MinifigService(API_KEY, BASE_URL);
         partCategoryService = new PartCategoryService(API_KEY, BASE_URL);
         partService = new PartService(API_KEY, BASE_URL);
+        setService = new SetService(API_KEY, BASE_URL);
     }
 
 }

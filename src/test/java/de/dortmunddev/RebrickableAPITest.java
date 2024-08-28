@@ -242,4 +242,30 @@ public class RebrickableAPITest extends TestCase {
         }
     }
 
+    public void testFetchAllSets() {
+
+        RebrickableAPI api = new RebrickableAPI();
+
+        try {
+            PartSetResponseDTO setResponseDTO = api.getSetService().fetchAllSets();
+
+            assertTrue(setResponseDTO.getCount() > 0);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void testFetchSetDetails() {
+
+        RebrickableAPI api = new RebrickableAPI();
+
+        try {
+            PartSetDTO setResponseDTO = api.getSetService().fetchDetailsForSet("0003977811-1");
+
+            assertEquals("0003977811-1", setResponseDTO.getSetNum());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
