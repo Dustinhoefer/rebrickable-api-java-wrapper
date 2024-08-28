@@ -1,6 +1,7 @@
 package de.dortmunddev;
 
 import de.dortmunddev.rebrickable.services.ColorService;
+import de.dortmunddev.rebrickable.services.ElementService;
 import lombok.Getter;
 
 public class RebrickableAPI {
@@ -9,6 +10,9 @@ public class RebrickableAPI {
 
     @Getter
     private final ColorService colorService;
+
+    @Getter
+    private final ElementService elementService;
 
     public RebrickableAPI() {
 
@@ -20,6 +24,7 @@ public class RebrickableAPI {
         }
 
         colorService = new ColorService(API_KEY, BASE_URL);
+        elementService = new ElementService(API_KEY, BASE_URL);
     }
 
 }
