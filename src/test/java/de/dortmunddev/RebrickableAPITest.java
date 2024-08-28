@@ -8,6 +8,8 @@ import de.dortmunddev.rebrickable.dto.minifig.InventoryResponseDTO;
 import de.dortmunddev.rebrickable.dto.minifig.MinifigDTO;
 import de.dortmunddev.rebrickable.dto.minifig.MinifigResponseDTO;
 import de.dortmunddev.rebrickable.dto.minifig.SetResponseDTO;
+import de.dortmunddev.rebrickable.dto.part_category.PartCategoryDTO;
+import de.dortmunddev.rebrickable.dto.part_category.PartCategoryResponseDTO;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -139,6 +141,34 @@ public class RebrickableAPITest extends TestCase {
             SetResponseDTO setResponseDTO = api.getMinifigService().fetchMinifigSetsBySetNum("fig-000001");
 
             assertTrue(setResponseDTO.getCount() > 0);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void testFetchAllPartCategories() {
+
+        assertTrue(true);
+
+        RebrickableAPI api = new RebrickableAPI();
+
+        try {
+            PartCategoryResponseDTO partCategoryResponseDTO = api.getPartCategoryService().fetchAllPartCategories();
+
+            assertTrue(partCategoryResponseDTO.getCount() > 0);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void testFetchSpecificPartCategory() {
+
+        RebrickableAPI api = new RebrickableAPI();
+
+        try {
+            PartCategoryDTO partCategoryDTO = api.getPartCategoryService().fetchPartCategoryById("1");
+
+            assertEquals(1, partCategoryDTO.getId());
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

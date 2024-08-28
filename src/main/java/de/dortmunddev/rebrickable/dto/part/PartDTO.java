@@ -1,4 +1,4 @@
-package de.dortmunddev.rebrickable.dto.element;
+package de.dortmunddev.rebrickable.dto.part;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

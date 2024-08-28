@@ -2,6 +2,7 @@ package de.dortmunddev.rebrickable.dto.element;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.dortmunddev.rebrickable.dto.color.ColorDTO;
+import de.dortmunddev.rebrickable.dto.part.PartDTO;
 import lombok.Data;
 
 @Data
