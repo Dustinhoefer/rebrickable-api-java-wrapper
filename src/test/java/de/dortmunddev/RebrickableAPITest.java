@@ -10,33 +10,31 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class RebrickableAPITest
-    extends TestCase
-{
+public class RebrickableAPITest extends TestCase {
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public RebrickableAPITest(String testName )
-    {
-        super( testName );
+    public RebrickableAPITest(String testName) {
+
+        super(testName);
     }
 
     /**
      * @return the suite of tests being tested
      */
-    public static Test suite()
-    {
-        return new TestSuite( RebrickableAPITest.class );
+    public static Test suite() {
+
+        return new TestSuite(RebrickableAPITest.class);
     }
 
     /**
      * Rigourous Test :-)
      */
-    public void testFetchAllColors()
-    {
-        assertTrue( true );
+    public void testFetchAllColors() {
+
+        assertTrue(true);
 
         RebrickableAPI api = new RebrickableAPI();
 
@@ -58,6 +56,7 @@ public class RebrickableAPITest
     }
 
     public void testFetchSpecificColor() {
+
         RebrickableAPI api = new RebrickableAPI();
 
         try {
