@@ -7,6 +7,7 @@ import de.dortmunddev.rebrickable.dto.element.ElementResponseDTO;
 import de.dortmunddev.rebrickable.dto.minifig.InventoryResponseDTO;
 import de.dortmunddev.rebrickable.dto.minifig.MinifigDTO;
 import de.dortmunddev.rebrickable.dto.minifig.MinifigResponseDTO;
+import de.dortmunddev.rebrickable.dto.minifig.SetResponseDTO;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -129,4 +130,18 @@ public class RebrickableAPITest extends TestCase {
             throw new RuntimeException(e);
         }
     }
+
+    public void testFetchSpecificMinifigSets() {
+
+        RebrickableAPI api = new RebrickableAPI();
+
+        try {
+            SetResponseDTO setResponseDTO = api.getMinifigService().fetchMinifigSetsBySetNum("fig-000001");
+
+            assertTrue(setResponseDTO.getCount() > 0);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
