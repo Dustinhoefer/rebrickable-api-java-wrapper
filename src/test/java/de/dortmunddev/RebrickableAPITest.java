@@ -8,6 +8,7 @@ import de.dortmunddev.rebrickable.dto.minifig.InventoryResponseDTO;
 import de.dortmunddev.rebrickable.dto.minifig.MinifigDTO;
 import de.dortmunddev.rebrickable.dto.minifig.MinifigResponseDTO;
 import de.dortmunddev.rebrickable.dto.minifig.SetResponseDTO;
+import de.dortmunddev.rebrickable.dto.part.PartColorResponseDTO;
 import de.dortmunddev.rebrickable.dto.part.PartDTO;
 import de.dortmunddev.rebrickable.dto.part.PartResponseDTO;
 import de.dortmunddev.rebrickable.dto.part_category.PartCategoryDTO;
@@ -199,6 +200,19 @@ public class RebrickableAPITest extends TestCase {
             PartDTO partDTO = api.getPartService().fetchPartByPartNum("003381");
 
             assertEquals("003381", partDTO.getPartNum());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void testFetchColorsForSpecificPart() {
+
+        RebrickableAPI api = new RebrickableAPI();
+
+        try {
+            PartColorResponseDTO partColorResponseDTO = api.getPartService().fetchColorsByPartNum("003381");
+
+            assertTrue(partColorResponseDTO.getCount() > 0);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
